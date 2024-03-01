@@ -1,8 +1,42 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { IFormInfo, initialFormInfo } from "../interfaces";
 
 export const PageStateForm = () => {
-	const [formInfo, setformInfo] = useState<IFormInfo>(initialFormInfo);
+	const [formInfo, setFormInfo] = useState<IFormInfo>(initialFormInfo);
+
+	const handleFieldFirstName = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		const _formInfo = structuredClone(formInfo); //structuredClone(formInfo);
+		const firstNameField = _formInfo.fields.find(
+			(m) => m.idCode === "firstName"
+		);
+		if (firstNameField) {
+			firstNameField.value = value;
+		}
+		setFormInfo(_formInfo);
+	};
+
+	const handleFieldLastName = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		const _setFormInfo = structuredClone(formInfo);
+		const lastNameField = _setFormInfo.fields.find(
+			(m) => m.idCode === "lastName"
+		);
+		if (lastNameField) {
+			lastNameField.value = value;
+		}
+		setFormInfo(_setFormInfo);
+	};
+
+	const handleFieldAge = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		const _setFormInfo = structuredClone(formInfo);
+		const ageField = _setFormInfo.fields.find((m) => m.idCode === "age");
+		if (ageField) {
+			ageField.value = value;
+		}
+		setFormInfo(_setFormInfo);
+	};
 
 	return (
 		<form>
@@ -14,9 +48,14 @@ export const PageStateForm = () => {
 						First Name:
 					</label>
 					<input
-						value={formInfo.fields.find(m => m.idCode === 'firstName')?.value}
+						value={
+							formInfo.fields.find(
+								(m) => m.idCode === "firstName"
+							)?.value
+						}
 						type="text"
 						id="firstName"
+						onChange={handleFieldFirstName}
 					/>
 				</div>
 
@@ -25,9 +64,13 @@ export const PageStateForm = () => {
 						Last Name:
 					</label>
 					<input
-						value={formInfo.fields.find(m => m.idCode === 'lastName')?.value}
+						value={
+							formInfo.fields.find((m) => m.idCode === "lastName")
+								?.value
+						}
 						type="text"
 						id="lastName"
+						onChange={handleFieldLastName}
 					/>
 				</div>
 
@@ -36,10 +79,14 @@ export const PageStateForm = () => {
 						Age:
 					</label>
 					<input
-						value={formInfo.fields.find(m => m.idCode === 'age')?.value}
+						value={
+							formInfo.fields.find((m) => m.idCode === "age")
+								?.value
+						}
 						type="text"
 						id="age"
 						className="w-12 text-right"
+						onChange={handleFieldAge}
 					/>
 				</div>
 
