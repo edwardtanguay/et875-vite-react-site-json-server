@@ -1,1 +1,2 @@
-- .. replace rpm-run-all with concurrently
+- x replace rpm-run-all with concurrently
+- .. env file
