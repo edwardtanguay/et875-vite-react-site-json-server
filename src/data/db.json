@@ -55,5 +55,18 @@
       "id": 8
     }
   ],
-  "members": []
+  "members": [
+    {
+      "firstName": "Susan",
+      "lastName": "Ashton",
+      "age": 23,
+      "id": 1
+    },
+    {
+      "firstName": "James",
+      "lastName": "Ratfield",
+      "age": 23,
+      "id": 2
+    }
+  ]
 }
